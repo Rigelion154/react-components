@@ -1,20 +1,12 @@
-export interface DataResponse {
-  id: number;
-  name: string;
-  status: string;
-  species: string;
-  gender: string;
-  image: string;
-}
+import { DataResponse } from '../../types/dataTypes';
 
 export default async function getCharacters(
   value: string | null = localStorage.getItem('userInputValue')
 ) {
   const baseUrl = `https://rickandmortyapi.com/api/character/?name=${value}`;
   const response = await fetch(baseUrl);
-  const data = await response.json();
+  const data: DataResponse = await response.json();
   const { results } = data;
 
-  console.log(results);
-  return results as DataResponse[];
+  return results;
 }

@@ -1,12 +1,9 @@
 import { Component } from 'react';
+
+import { AppProps, AppState } from './types/appTypes';
+
 import Card from './components/Card/Card';
 import SearchBar from './components/SearchBar/SearchBar';
-
-interface AppProps {}
-
-interface AppState {
-  searchValue: string;
-}
 
 class App extends Component<AppProps, AppState> {
   state = {
@@ -18,7 +15,6 @@ class App extends Component<AppProps, AppState> {
   };
 
   render() {
-    console.log(this.state.searchValue);
     return (
       <div className="container">
         <SearchBar handleOnSearch={this.handleOnSearch} />

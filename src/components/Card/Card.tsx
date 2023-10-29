@@ -1,23 +1,9 @@
 import { Component } from 'react';
+import { CardProps, CardState } from '../../types/cardTypes';
+
 import getCharacters from '../../utils/services/getCharacters';
+
 import styles from '../../styles/Card.module.css';
-
-interface Data {
-  id: number;
-  name: string;
-  status: string;
-  species: string;
-  gender: string;
-  image: string;
-}
-
-interface CardProps {
-  userInput: string | null;
-}
-
-interface CardState {
-  characters: Data[];
-}
 
 class Card extends Component<CardProps, CardState> {
   constructor(props: CardProps) {
@@ -33,18 +19,18 @@ class Card extends Component<CardProps, CardState> {
     );
   }
 
+  componentDidUpdate(prevProps: CardProps) {
+    if (prevProps.userInput !== this.props.userInput) {
+      this.fetchData(this.props.userInput);
+    }
+  }
+
   fetchData(userInput: string | null) {
     getCharacters(userInput)
       .then((res) => {
         this.setState({ characters: res });
       })
       .catch(() => {});
-  }
-
-  componentDidUpdate(prevProps: CardProps) {
-    if (prevProps.userInput !== this.props.userInput) {
-      this.fetchData(this.props.userInput);
-    }
   }
 
   render() {

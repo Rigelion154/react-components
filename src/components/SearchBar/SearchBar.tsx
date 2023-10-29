@@ -1,14 +1,9 @@
 import { ChangeEvent, Component } from 'react';
-import styles from '../../styles/Header.module.css';
+import { SearchBarProps, SearchBarState } from '../../types/serchTypes';
+
 import LOGO from '../../assets/RAM-XLHeroBanner-logo-desktop.webp';
 
-interface SearchBarProps {
-  handleOnSearch: (userValue: string) => void;
-}
-
-interface SearchBarState {
-  userInput: string | null;
-}
+import styles from '../../styles/Header.module.css';
 
 class SearchBar extends Component<SearchBarProps, SearchBarState> {
   state = {
@@ -36,6 +31,7 @@ class SearchBar extends Component<SearchBarProps, SearchBarState> {
             type="text"
             value={this.state.userInput}
             onChange={this.handleInputChange}
+            placeholder="Character name"
             className={styles.input}
           />
           <button
