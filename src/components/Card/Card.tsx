@@ -14,15 +14,12 @@ class Card extends Component<CardProps, CardState> {
   }
 
   componentDidMount() {
-    this.fetchData(
-      localStorage.getItem('userInputValue') || this.props.userInput
-    );
+    this.fetchData(this.props.userInput);
   }
 
   componentDidUpdate(prevProps: CardProps) {
     if (prevProps.userInput !== this.props.userInput) {
       this.fetchData(this.props.userInput);
-      console.log('Card', this.props.userInput);
     }
   }
 

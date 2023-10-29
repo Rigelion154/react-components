@@ -3,5 +3,5 @@ export interface SearchBarProps {
 }
 
 export interface SearchBarState {
-  userInput: string | null;
+  userInput: string;
 }

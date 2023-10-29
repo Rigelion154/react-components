@@ -1,15 +1,18 @@
 import { ChangeEvent, Component } from 'react';
 import { SearchBarProps, SearchBarState } from '../../types/serchTypes';
 
-import LOGO from '../../assets/RAM-XLHeroBanner-logo-desktop.webp';
+import LOGO from '../../assets/logo.webp';
 
 import styles from '../../styles/Header.module.css';
 import ErrorButton from '../ErrorButton/ErrorButton';
 
 class SearchBar extends Component<SearchBarProps, SearchBarState> {
-  state = {
-    userInput: localStorage.getItem('userInputValue') || '',
-  };
+  constructor(props: SearchBarProps) {
+    super(props);
+    this.state = {
+      userInput: localStorage.getItem('userInputValue') || '',
+    };
+  }
 
   handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -19,8 +22,11 @@ class SearchBar extends Component<SearchBarProps, SearchBarState> {
 
   handleSearch = () => {
     this.props.handleOnSearch(this.state.userInput);
-    console.log('button', this.state.userInput);
   };
+
+  componentDidMount() {
+    this.props.handleOnSearch(this.state.userInput);
+  }
 
   render() {
     return (
@@ -31,7 +37,7 @@ class SearchBar extends Component<SearchBarProps, SearchBarState> {
         <div className={styles.input__container}>
           <input
             type="text"
-            value={this.state.userInput}
+            value={this.state.userInput || ''}
             onChange={this.handleInputChange}
             placeholder="Character name"
             className={styles.input}
