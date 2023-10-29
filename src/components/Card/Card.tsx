@@ -22,6 +22,7 @@ class Card extends Component<CardProps, CardState> {
   componentDidUpdate(prevProps: CardProps) {
     if (prevProps.userInput !== this.props.userInput) {
       this.fetchData(this.props.userInput);
+      console.log('Card', this.props.userInput);
     }
   }
 
@@ -36,7 +37,7 @@ class Card extends Component<CardProps, CardState> {
   render() {
     return (
       <main className={styles.container}>
-        {this.state.characters &&
+        {this.state.characters ? (
           this.state.characters.map((el) => (
             <div key={el.id} className={styles.card}>
               <img src={el.image} alt="Character" className={styles.img} />
@@ -47,7 +48,10 @@ class Card extends Component<CardProps, CardState> {
                 <h4>Species: {el.species}</h4>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <h2 className={styles.error}>This character doesn't exist</h2>
+        )}
       </main>
     );
   }

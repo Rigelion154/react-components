@@ -4,6 +4,7 @@ import { SearchBarProps, SearchBarState } from '../../types/serchTypes';
 import LOGO from '../../assets/RAM-XLHeroBanner-logo-desktop.webp';
 
 import styles from '../../styles/Header.module.css';
+import ErrorButton from '../ErrorButton/ErrorButton';
 
 class SearchBar extends Component<SearchBarProps, SearchBarState> {
   state = {
@@ -18,6 +19,7 @@ class SearchBar extends Component<SearchBarProps, SearchBarState> {
 
   handleSearch = () => {
     this.props.handleOnSearch(this.state.userInput);
+    console.log('button', this.state.userInput);
   };
 
   render() {
@@ -42,6 +44,7 @@ class SearchBar extends Component<SearchBarProps, SearchBarState> {
             Search
           </button>
         </div>
+        <ErrorButton />
       </header>
     );
   }
