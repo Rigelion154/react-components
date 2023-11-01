@@ -1,27 +1,21 @@
-import { Component } from 'react';
-
-import { ButtonProps, ButtonState } from '../../types/errorButtonsType';
+import { useState } from 'react';
 
 import styles from '../../styles/ErrorButton.module.css';
 
-class ErrorButton extends Component<ButtonProps, ButtonState> {
-  state = {
-    isError: false,
+const ErrorButton = () => {
+  const [error, setError] = useState(false);
+
+  const getError = () => {
+    setError(true);
   };
 
-  getError = () => {
-    this.setState({ isError: true });
-  };
+  if (error) throw new Error('The Error');
 
-  render() {
-    if (this.state.isError) throw new Error('The Error');
-
-    return (
-      <button type="button" onClick={this.getError} className={styles.button}>
-        Get an <span>Error</span>
-      </button>
-    );
-  }
-}
+  return (
+    <button type="button" onClick={getError} className={styles.button}>
+      Get an <span>Error</span>
+    </button>
+  );
+};
 
 export default ErrorButton;
