@@ -1,21 +1,17 @@
-import { useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-import { CharactersData } from './types/interfaces';
-
-import Card from './components/Card/Card';
-import SearchBar from './components/SearchBar/SearchBar';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import AppRouter from './routes/AppRouter';
 
 const App = () => {
-  const [characters, setCharacters] = useState<CharactersData[]>([]);
-
   return (
-    <div className="container">
+    <BrowserRouter>
       <ErrorBoundary>
-        <SearchBar handleOnSearch={setCharacters} />
-        <Card characters={characters} />
+        <div className="container">
+          <AppRouter />
+        </div>
       </ErrorBoundary>
-    </div>
+    </BrowserRouter>
   );
 };
 

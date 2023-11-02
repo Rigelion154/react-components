@@ -1,12 +1,9 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 
-import { SearchBarProps } from '../../types/interfaces';
-import { fetchCharacters } from '../../utils/fetchCharacters';
+import { SearchBarProps } from '../../../types/interfaces';
+import { fetchCharacters } from '../../../utils/fetchCharacters';
 
-import ErrorButton from '../ErrorButton/ErrorButton';
-import LOGO from '../../assets/logo.webp';
-
-import styles from '../../styles/Header.module.css';
+import styles from '../../../styles/Header.module.css';
 
 const SearchBar = ({ handleOnSearch }: SearchBarProps) => {
   const [inputValue, setInputValue] = useState(
@@ -31,10 +28,7 @@ const SearchBar = ({ handleOnSearch }: SearchBarProps) => {
   };
 
   return (
-    <header className={styles.container}>
-      <div>
-        <img src={LOGO} alt="Logo" className={styles.logo} />
-      </div>
+    <form className={styles.container}>
       <div className={styles.input__container}>
         <input
           type="text"
@@ -51,8 +45,7 @@ const SearchBar = ({ handleOnSearch }: SearchBarProps) => {
           Search
         </button>
       </div>
-      <ErrorButton />
-    </header>
+    </form>
   );
 };
 

@@ -19,6 +19,10 @@ export interface CharactersData {
   image: string;
 }
 
+export interface HeaderProps {
+  setCharacters: React.Dispatch<React.SetStateAction<CharactersData[]>>;
+}
+
 export interface SearchBarProps {
   handleOnSearch: React.Dispatch<React.SetStateAction<CharactersData[]>>;
 }

@@ -1,6 +1,6 @@
-import { CardProps } from '../../types/interfaces';
+import { CardProps } from '../../../types/interfaces';
 
-import styles from '../../styles/Card.module.css';
+import styles from '../../../styles/Card.module.css';
 
 const Card = ({ characters }: CardProps) => {
   return (
