@@ -10,6 +10,5 @@ export default async function getCharacters(
   }`;
   const response = await fetch(baseUrl);
   const data: Beer[] = await response.json();
-  console.log(data);
   return data;
 }

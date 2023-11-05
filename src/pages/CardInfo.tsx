@@ -18,15 +18,19 @@ const CardInfo = () => {
   }, [id]);
   return (
     <>
-      {beer.map((el) => (
-        <div key={el.id} className={styles.container}>
-          <h2>{el.name}</h2>
-          <p>{el.description}</p>
-          <Link className={styles.close} to={'/'}>
-            &#10005;
-          </Link>
-        </div>
-      ))}
+      {beer.length > 0 ? (
+        beer.map((el) => (
+          <div key={el.id} className={styles.container}>
+            <h2>{el.name}</h2>
+            <p>{el.description}</p>
+            <Link className={styles.close} to={'/'}>
+              &#10005;
+            </Link>
+          </div>
+        ))
+      ) : (
+        <div>Loading...</div>
+      )}
     </>
   );
 };
