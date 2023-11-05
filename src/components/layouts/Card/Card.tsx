@@ -2,18 +2,15 @@ import { CardProps } from '../../../types/interfaces';
 
 import styles from '../../../styles/Card.module.css';
 
-const Card = ({ characters }: CardProps) => {
+const Card = ({ beers }: CardProps) => {
   return (
     <main className={styles.container}>
-      {characters ? (
-        characters.map((el) => (
+      {beers ? (
+        beers.map((el) => (
           <div key={el.id} className={styles.card}>
-            <img src={el.image} alt="Character" className={styles.img} />
+            <img src={el.image_url} alt="Character" className={styles.img} />
             <div className={styles.description}>
               <h2>{el.name}</h2>
-              <h4>Gender: {el.gender}</h4>
-              <h4>Status: {el.status}</h4>
-              <h4>Species: {el.species}</h4>
             </div>
           </div>
         ))

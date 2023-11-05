@@ -1,13 +1,16 @@
+import { Beer } from '../types/interfaces';
 import getCharacters from './services/getCharacters';
-import { CharactersData } from '../types/interfaces';
+import React from 'react';
 
 export function fetchCharacters(
-  inputValue: string,
-  handleOnSearch: (charactersArray: CharactersData[]) => void
+  setCharacters: React.Dispatch<React.SetStateAction<Beer[]>>,
+  name: string,
+  page: number,
+  itemsOnPage: number
 ) {
-  getCharacters(inputValue)
+  getCharacters(name, page, itemsOnPage)
     .then((res) => {
-      handleOnSearch(res);
+      setCharacters(res);
     })
     .catch(() => {});
 }

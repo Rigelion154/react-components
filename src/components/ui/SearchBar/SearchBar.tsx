@@ -1,7 +1,6 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import { SearchBarProps } from '../../../types/interfaces';
-import { fetchCharacters } from '../../../utils/fetchCharacters';
 
 import styles from '../../../styles/Header.module.css';
 
@@ -9,16 +8,9 @@ const SearchBar = ({ handleOnSearch }: SearchBarProps) => {
   const [inputValue, setInputValue] = useState(
     localStorage.getItem('searchValue') || ''
   );
-  const [searchValue, setSearchValue] = useState(
-    localStorage.getItem('searchValue') || ''
-  );
-
-  useEffect(() => {
-    fetchCharacters(searchValue, handleOnSearch);
-  }, [searchValue, handleOnSearch]);
 
   const searchButtonHandler = () => {
-    setSearchValue(inputValue);
+    handleOnSearch(inputValue);
   };
 
   const searchChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +26,7 @@ const SearchBar = ({ handleOnSearch }: SearchBarProps) => {
           type="text"
           value={inputValue || ''}
           onChange={searchChange}
-          placeholder="Character name"
+          placeholder="Beer name"
           className={styles.input}
         />
         <button
