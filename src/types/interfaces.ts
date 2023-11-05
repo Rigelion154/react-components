@@ -73,4 +73,5 @@ export interface SearchBarProps {
 
 export interface CardProps {
   beers: Beer[];
+  page: number;
 }
