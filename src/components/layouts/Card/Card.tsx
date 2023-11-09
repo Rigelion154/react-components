@@ -2,8 +2,12 @@ import { CardProps } from '../../../types/interfaces';
 
 import styles from '../../../styles/Card.module.css';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AppContext } from '../../../context/context';
 
-const Card = ({ beers, page }: CardProps) => {
+const Card = ({ page }: CardProps) => {
+  const { beers } = useContext(AppContext);
+
   return (
     <main className={styles.container}>
       {beers ? (
