@@ -20,11 +20,11 @@ const Card = ({ page }: CardProps) => {
             <div className={styles.description}>
               <h2>{el.name}</h2>
             </div>
-            <img src={el.image_url} alt="Character" className={styles.img} />
+            <img src={el.image_url} alt="Beer" className={styles.img} />
           </Link>
         ))
       ) : (
-        <h2 className={styles.error}>This character doesn't exist</h2>
+        <h2 className={styles.error}>This beers doesn't exist</h2>
       )}
     </main>
   );
