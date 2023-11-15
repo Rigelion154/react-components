@@ -8,11 +8,13 @@ import Card from '../components/layouts/Card/Card';
 import Pagination from '../components/ui/Pagination/Pagination';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/context';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
 
 const MainPage = () => {
   const [beers, setBeers] = useState<Beer[]>([]);
-  const [searchValue, setSearchValue] = useState(
-    localStorage.getItem('searchValue') || ''
+  const { searchValue } = useSelector(
+    (state: RootState) => state.searchReducer
   );
   const [page, setPage] = useState(1);
   const [itemsOnPage, setItemsOnPage] = useState(10);
@@ -26,7 +28,7 @@ const MainPage = () => {
   return (
     <AppContext.Provider value={{ beers, searchValue }}>
       <>
-        <Header setSearchValue={setSearchValue} />
+        <Header />
         <Pagination
           page={page}
           setPage={setPage}
