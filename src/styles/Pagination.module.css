@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
+  column-gap: 10px;
+}
+
+.control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.control__button {
+  padding: 5px;
+  border: 2px solid #02afc5;
+  color: #02afc5;
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.input__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5px;
+}
+
+.input {
+  max-width: 50px;
+  text-align: center;
+}
