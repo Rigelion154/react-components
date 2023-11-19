@@ -1,21 +1,25 @@
 import React from 'react';
-import { Beer } from '../../../types/interfaces';
+import { IBeer } from '../../../types/interfaces';
 
 import styles from '../../../styles/Pagination.module.css';
+import { searchConfigureSlice } from '../../../store/reducers/SearchConfigureSlice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../store/store';
 
 const Pagination = ({
   page,
   setPage,
   beers,
   itemsOnPage,
-  setItemsOnPage,
 }: {
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
-  beers: Beer[];
+  beers: IBeer[] | undefined;
   itemsOnPage: number;
-  setItemsOnPage: React.Dispatch<React.SetStateAction<number>>;
 }) => {
+  const { setItems } = searchConfigureSlice.actions;
+  const dispatch = useDispatch<AppDispatch>();
+
   return (
     <div className={styles.container}>
       <div className={styles.control}>
@@ -30,7 +34,7 @@ const Pagination = ({
         <h3>{page}</h3>
         <button
           className={styles.control__button}
-          disabled={beers.length < itemsOnPage}
+          disabled={beers && beers.length < itemsOnPage}
           type="button"
           onClick={() => setPage((prevPage) => prevPage + 1)}
         >
@@ -44,7 +48,7 @@ const Pagination = ({
           type="number"
           value={itemsOnPage}
           onChange={(e) => {
-            setItemsOnPage(Number(e.target.value));
+            dispatch(setItems(Number(e.target.value)));
             setPage(1);
           }}
         />

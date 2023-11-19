@@ -1,10 +1,10 @@
-import { Beer } from '../types/interfaces';
+import { IBeer } from '../types/interfaces';
 import getCharacters from './services/getCharacters';
 import React from 'react';
 
 export function fetchCharacters(
-  setCharacters: React.Dispatch<React.SetStateAction<Beer[]>>,
-  name: string,
+  setCharacters: React.Dispatch<React.SetStateAction<IBeer[]>>,
+  name: string | null,
   page: number,
   itemsOnPage: number
 ) {

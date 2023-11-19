@@ -1,6 +1,8 @@
 import React from 'react';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { SerializedError } from '@reduxjs/toolkit';
 
-export interface Beer {
+export interface IBeer {
   id: number;
   name: string;
   // tagline: string;
@@ -72,6 +74,8 @@ export interface SearchBarProps {
 }
 
 export interface CardProps {
-  // beers: Beer[];
+  error: FetchBaseQueryError | SerializedError | undefined;
+  loading: boolean;
+  beers: IBeer[] | undefined;
   page: number;
 }

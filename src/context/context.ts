@@ -1,8 +1,8 @@
 import React from 'react';
-import { Beer } from '../types/interfaces';
+import { IBeer } from '../types/interfaces';
 
 interface ContextType {
-  beers: Beer[];
+  beers: IBeer[];
   searchValue: string;
 }
 

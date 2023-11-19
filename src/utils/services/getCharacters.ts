@@ -1,7 +1,7 @@
-import { Beer } from '../../types/interfaces';
+import { IBeer } from '../../types/interfaces';
 
 export default async function getCharacters(
-  name: string,
+  name: string | null,
   page: number,
   itemsOnPage: number
 ) {
@@ -9,6 +9,6 @@ export default async function getCharacters(
     name ? `beer_name=${name}` : ''
   }`;
   const response = await fetch(baseUrl);
-  const data: Beer[] = await response.json();
+  const data: IBeer[] = await response.json();
   return data;
 }

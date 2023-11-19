@@ -2,15 +2,17 @@ import { CardProps } from '../../../types/interfaces';
 
 import styles from '../../../styles/Card.module.css';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { AppContext } from '../../../context/context';
+// import { useContext } from 'react';
+// import { AppContext } from '../../../context/context';
 
-const Card = ({ page }: CardProps) => {
-  const { beers } = useContext(AppContext);
+const Card = ({ error, loading, beers, page }: CardProps) => {
+  // const { beers } = useContext(AppContext);
 
   return (
     <main className={styles.container}>
-      {beers ? (
+      {error && <h2>Error</h2>}
+      {loading && <h2>Loading...</h2>}
+      {beers &&
         beers.map((el) => (
           <Link
             to={`/details/${el.id}?page=${page}`}
@@ -22,10 +24,7 @@ const Card = ({ page }: CardProps) => {
             </div>
             <img src={el.image_url} alt="Beer" className={styles.img} />
           </Link>
-        ))
-      ) : (
-        <h2 className={styles.error}>This beers doesn't exist</h2>
-      )}
+        ))}
     </main>
   );
 };

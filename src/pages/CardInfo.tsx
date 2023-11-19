@@ -1,12 +1,12 @@
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Beer } from '../types/interfaces';
+import { IBeer } from '../types/interfaces';
 import getBeerById from '../utils/services/getBeerById';
 import styles from '../styles/CardInfo.module.css';
 
 const CardInfo = () => {
   const { id } = useParams();
-  const [beer, setBeer] = useState<Beer[]>([]);
+  const [beer, setBeer] = useState<IBeer[]>([]);
 
   useEffect(() => {
     if (id)
