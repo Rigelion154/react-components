@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import searchReducer from './reducers/SearchConfigureSlice';
-import { beerApi } from '../utils/services/BeerService';
+import { beerApi } from '../services/BeerService';
 
 export const store = configureStore({
   reducer: {

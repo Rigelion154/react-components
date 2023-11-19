@@ -5,10 +5,10 @@ import { SerializedError } from '@reduxjs/toolkit';
 export interface IBeer {
   id: number;
   name: string;
-  // tagline: string;
-  // first_brewed: string;
   description: string;
   image_url: string;
+  // tagline: string;
+  // first_brewed: string;
   // abv: number;
   // ibu: number;
   // target_fg: number;

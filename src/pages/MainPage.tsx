@@ -5,7 +5,7 @@ import Pagination from '../components/ui/Pagination/Pagination';
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
-import { beerApi } from '../utils/services/BeerService';
+import { beerApi } from '../services/BeerService';
 
 const MainPage = () => {
   const { searchValue, itemsPerPage } = useSelector(
